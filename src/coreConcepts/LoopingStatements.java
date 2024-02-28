@@ -93,7 +93,32 @@ public class LoopingStatements {
 		
 	}
 	
-	
+	//WAP to find a student in a class room
+	@Test
+	public void findStudent() // roll num = 242  
+	{
+		boolean result = false; // not found
+		for(int i=1;i<=60;i++)
+		{
+			//System.out.println("Roll Number :"+ i);
+			if(i == 22)
+			{ //true
+				//System.out.println("Found the Student");
+				result = true; //found
+				break;
+			}
+		}		
+		System.out.println("Came out of for loop");
+		System.out.println(result);
+		if(result == true)
+		{
+			System.out.println("Found the Student");
+		}
+		else
+		{
+			System.out.println("Not Found the Student");
+		}
+	}
 	
 	
 	
