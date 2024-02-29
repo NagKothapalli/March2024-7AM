@@ -6,7 +6,9 @@ public class StringOperations
 {
 	String a = "     Selenium With Java              ";
 	
-	String b = "Selenium With Java";
+	String b = "Selenium With JAVA      ";
+	
+	String c = "JAVA";
 	
 	@Test
 	public void basicOperations()
@@ -42,9 +44,34 @@ public class StringOperations
 		
 	}
 	
+	@Test
+	public void stringContains()
+	{
+		boolean result = a.toUpperCase().contains(c.toUpperCase());
+		System.out.println(result);
+		if(result == true)
+		{
+			System.out.println("String a contains c");
+		}
+		else
+		{
+			System.out.println("String a does not contains c");
+		}
+	}
 	
+	//Both must be of type string , same in length , same in char sequence , same in case 
 	
+	@Test
+	public void stringEquals123345()
+	{
+		//boolean result = a.equals(b);
+		//boolean result = a.trim().toLowerCase().equals(b.trim().toLowerCase());
+		boolean result = a.trim().equalsIgnoreCase(b.trim());
+		System.out.println(result);
+		
+	}
 	
+	//split - array
 	
 	
 	
