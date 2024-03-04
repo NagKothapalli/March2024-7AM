@@ -81,6 +81,82 @@ public class ArraysInJava {
 		}
 	}
 	
+	@Test
+	public void findStudentFromTheGroup()
+	{
+		int[]  students = {3,45,23,67657,34,56,34,67,34,67,34,56,434,675,78,896,5,6765,545};
+		boolean result = false;
+		System.out.println("Length :" + students.length);
+		for(int i=0;i<students.length;i++) // 434
+		{
+			int s = students[i]; // i =0  1 2 3 4 5 .....
+			System.out.println("Iteration :"+ i);
+			if(s==4034)
+			{
+				result = true;
+				break;
+			}
+		}
+		
+		System.out.println(result);
+	}
+	@Test
+	public void findStudentFromTheGroup_test()
+	{
+		int[]  group = {3,45,23,67657,34,56,34,67,34,67,34,56,434,675,78,896,5,6765,545};
+		findStudentFromTheGroup(group,555);
+	}
+	
+	public void findStudentFromTheGroup(int[] students, int std)
+	{
+		//int[]  students = {3,45,23,67657,34,56,34,67,34,67,34,56,434,675,78,896,5,6765,545};
+		boolean result = false;
+		System.out.println("Length :" + students.length);
+		for(int i=0;i<students.length;i++) // 434
+		{
+			int s = students[i]; // i =0  1 2 3 4 5 .....
+			System.out.println("Iteration :"+ i);
+			if(s==std)
+			{
+				result = true;
+				break;
+			}
+		}
+		
+		System.out.println(result);
+	}
+	
+	@Test
+	public void findEvenNumbers()
+	{
+		int[]  group = {3,45,23,67657,34,56,34,67,34,67,34,56,434,675,78,896,5,6765,545};
+		int counter = 0;
+		for(int i=0;i<group.length;i++)
+		{
+			if((group[i] % 2) == 0){
+				counter = counter + 1;
+				System.out.println(group[i]);
+				
+			}
+		}
+		
+		System.out.println("Count :" + counter);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//Collections : List , ArrayList , Set ,   - inheritance
 	
 	
 	

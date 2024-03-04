@@ -11,6 +11,25 @@ public class GmailWithJunit
 	
 	// SDET : Software Development Engineer in Testing 
 	
+	@Test
+	public void smokeSuite()
+	{
+		System.out.println("Test Suite : SMOKE");
+		composeAndSendAnEmail();
+		replyToAnEmail();
+		
+	}
+	
+	@Test
+	public void regressionSuite()
+	{
+		System.out.println("Test Suite : SMOKE");
+		composeAndSendAnEmail();
+		replyToAnEmail();
+		forwardToAnEmail();
+		deleteAnEmail() ;
+	}
+	
 	@Test //Annotation ,  @Before  , @After
 	public void composeAndSendAnEmail()  // Ravi
 	{
