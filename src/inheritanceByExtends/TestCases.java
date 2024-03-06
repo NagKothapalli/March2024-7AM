@@ -1,35 +1,10 @@
-package coreConcepts;
+package inheritanceByExtends;
 
 import org.junit.Test;
 
-public class GmailWithJunit
+public class TestCases
 {
-	
-	//Junit : Unit Test Framework , used for executing unit test cases . JUnit is a unit testing framework to write and run repeatable automated tests on Java.
-	
-	//TDD : Test Driven Development  , Code Coverage must be 100 % 
-	
-	// SDET : Software Development Engineer in Testing 
-	
-	@Test
-	public void smokeSuite() // Build validation Testing - BVT 
-	{
-		System.out.println("Test Suite : SMOKE");
-		composeAndSendAnEmail();
-		replyToAnEmail();
-		
-	}
-	
-	@Test
-	public void regressionSuite()
-	{
-		System.out.println("Test Suite : SMOKE");
-		composeAndSendAnEmail();
-		replyToAnEmail();
-		forwardToAnEmail();
-		deleteAnEmail() ;
-	}
-	
+
 	@Test //Annotation ,  @Before  , @After
 	public void composeAndSendAnEmail()  // Ravi
 	{
@@ -57,5 +32,4 @@ public class GmailWithJunit
 		System.out.println("Test Case : Delete An Email");
 		//logout , close 
 	}
-
 }
