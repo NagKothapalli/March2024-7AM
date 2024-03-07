@@ -9,15 +9,15 @@ public class TestSuites extends TestCases  //simple inheritance
 	public void smokeSuite() // Build validation Testing - BVT 
 	{
 		System.out.println("Test Suite : SMOKE");
-		composeAndSendAnEmail();
-		replyToAnEmail();
-		
+		//composeAndSendAnEmail();
+		//replyToAnEmail();
+		launchApplication();
 	}
 	
 	@Test
 	public void regressionSuite()
 	{
-		System.out.println("Test Suite : SMOKE");
+		System.out.println("Test Suite : REGRESSION");
 		composeAndSendAnEmail();
 		replyToAnEmail();
 		forwardToAnEmail();
