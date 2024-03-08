@@ -1,4 +1,4 @@
-package inheritanceByExtends;
+package simpleInheritance;
 
 import org.junit.Test;
 
@@ -9,9 +9,8 @@ public class TestSuites extends TestCases  //simple inheritance
 	public void smokeSuite() // Build validation Testing - BVT 
 	{
 		System.out.println("Test Suite : SMOKE");
-		//composeAndSendAnEmail();
-		//replyToAnEmail();
-		launchApplication();
+		composeAndSendAnEmail();
+		replyToAnEmail();
 	}
 	
 	@Test

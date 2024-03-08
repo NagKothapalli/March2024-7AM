@@ -1,4 +1,4 @@
-package inheritanceByExtends;
+package heairarchialInheritance;
 
 import org.junit.Test;
 
@@ -7,7 +7,7 @@ import org.junit.Test;
 
 
 //             child              parent
-public class TestCases extends ReusableComponents
+public class TestCases_M1 extends ReusableComponents
 {
   //this , super - keyword
 	@Test //Annotation ,  @Before  , @After
@@ -34,28 +34,5 @@ public class TestCases extends ReusableComponents
 		logoutFromApplication();
 		closeApplication(); 
 	}
-	@Test
-	public void forwardToAnEmail() //Rajesh
-	{
-		//launch application , login to application 
-		System.out.println("Test Case : Forward An Email");
-		launchApplication();
-		loginToApplication();
-		open();
-		forward();
-		logoutFromApplication();
-		closeApplication();
-	}
-	@Test
-	public void deleteAnEmail() //Ramesh
-	{
-		//launch application , login to application 
-		System.out.println("Test Case : Delete An Email");
-		launchApplication();
-		loginToApplication();
-		open();
-		delete();
-		logoutFromApplication();
-		closeApplication();
-	}
+	
 }

@@ -1,4 +1,4 @@
-package inheritanceByExtends;
+package heairarchialInheritance;
 
 public class ReusableComponents
 {
