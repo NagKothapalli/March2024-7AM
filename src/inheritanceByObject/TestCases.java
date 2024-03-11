@@ -10,11 +10,29 @@ import org.junit.Test;
 public class TestCases
 {
 	
-	public TestCases()
+	/*
+	 * public TestCases() { System.out.println("Open Google chrome Browser");
+	 * System.out.println("Delete Temp records"); }
+	 */
+	
+	public TestCases(String browser)
 	{
-		System.out.println("Open Google chrome Browser");
+		System.out.println("Open Browser   : "  + browser);  // chrome , firefox , edge
 		System.out.println("Delete Temp records");
 	}
+	
+	/*
+	 * public TestCases(String browser,int version) {
+	 * System.out.println("Open Browser   : " + browser + " , with Version :" +
+	 * version); // chrome , firefox , edge
+	 * System.out.println("Delete Temp records"); }
+	 */
+	
+	public void sendMail(String mailid)
+	{
+		System.out.println("Send Mail to ID :" + mailid);
+	}
+	
   //this , super - keyword
 	@Test //Annotation ,  @Before  , @After
 	public void composeAndSendAnEmail()  // Ravi

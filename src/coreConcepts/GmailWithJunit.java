@@ -30,27 +30,29 @@ public class GmailWithJunit
 		deleteAnEmail() ;
 	}
 	
-	@Test //Annotation ,  @Before  , @After
-	public void composeAndSendAnEmail()  // Ravi
+	
+	
+	//@Test //Annotation ,  @Before  , @After
+	private void composeAndSendAnEmail()  // Ravi
 	{
 		//launch application , login to application , compose , send , logout , close 
 		System.out.println("Test Case : Compose And Send An Email");
 	}
-	@Test
-	public void replyToAnEmail() //Raj
+	//@Test
+	void replyToAnEmail() //Raj
 	{
 		//launch application , login to application 
 		System.out.println("Test Case : Reply to An Email");
 		//logout , close 
 	}
-	@Test
-	public void forwardToAnEmail() //Rajesh
+	//@Test
+	protected void forwardToAnEmail() //Rajesh
 	{
 		//launch application , login to application 
 		System.out.println("Test Case : Forward An Email");
 		//logout , close 
 	}
-	@Test
+	//@Test
 	public void deleteAnEmail() //Ramesh
 	{
 		//launch application , login to application 

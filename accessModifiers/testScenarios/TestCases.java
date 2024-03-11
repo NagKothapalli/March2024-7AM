@@ -1,6 +1,8 @@
-package multilevelInheritance;
+package testScenarios;
 
 import org.junit.Test;
+
+import rComponents.ReusableComponents;
 
 //TestSuites          TestCases       ReusableComponents
 // child                parent          grand parent

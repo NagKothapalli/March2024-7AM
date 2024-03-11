@@ -1,6 +1,8 @@
-package multilevelInheritance;
+package testBatches;
 
 import org.junit.Test;
+
+import testScenarios.TestCases;
 
 //             child              parent
 public class TestSuites extends TestCases  //simple inheritance
