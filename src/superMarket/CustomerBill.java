@@ -21,6 +21,7 @@ public class CustomerBill
 		
 		//ArithmeticOperations aCalc = new ArithmeticOperations();
 		//WebDriver  driver = new ChromeDriver();
+		//driver.get("https://gmail.com");
 		ArithmeticOperations aCalc = new MiniCalculator();
 		//mCalc.displyMiniLogo();
 		//cCalc.displyCommercialLOgoLogo();
