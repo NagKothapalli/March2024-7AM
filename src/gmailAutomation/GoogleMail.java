@@ -1,6 +1,7 @@
 package gmailAutomation;
 
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import junit.framework.Assert;
@@ -8,7 +9,7 @@ import junit.framework.Assert;
 public class GoogleMail
 {
 	
-	String expectedTitle = "Amail";
+	String expectedTitle = "Gmail";
 	
 	@Test
 	public void launchGmailApplication()
@@ -32,7 +33,32 @@ public class GoogleMail
 			System.out.println("Launch Application Failed");
 		}
 		
+		driver.findElement(By.name("identifier1")).sendKeys("nag022@gmail.com , password");
 		
 	}
+	
+	@Test
+	public void loginToGmailApplication()
+	{
+		System.out.println("Test Case : Login to Gmail Application");
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
