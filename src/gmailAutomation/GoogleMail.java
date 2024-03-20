@@ -43,13 +43,28 @@ public class GoogleMail
 	//Execution Flow : Class variables -> Constructor  -> Before method -> Test Method
 	//org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element
 	
-	//By class Methods : ID , Name , Class Name , Tag Name , LinkText , Partial LinkText , Xpath
+	//WebDriver [ I ]  :  ChromeDriver [C] , FirefoxDriver [C] , EdgeDriver [C] , OperaDriver [C]
+	
+	//The functionality that we can do at browser level are included in the WebDriver : get(),getCurrentUrl(), getTitle(),getWindowHandle(),getWindowHandles(), findElement(),
+											//findElements() , close() , quit(), refresh(), minimize() , maximize()
+	
+	// WebElements level functions are included in the WebElement : click() , clear() , sendKeys() , getText(), getAttribute() , isDisplayed() , isEnabled() ,findElement(),
+	                                                                //findElements()
+	
+	//All selenium selectors / Locators are included in  By class : ID , Name , Class Name , Tag Name , LinkText , Partial LinkText , Xpath
+	
+	// All types of webelements : button , textbox , radio button , checkbox , iframe , drop downs , mouse hover , double click
+	
+	//xpath : XML path / Absolute xpath / static xpath , fixed xapth
+	
+	//Relative xpath : //tgName[@attribute = value ]  -> angular , react , php 
 	
 	@Test
 	public void loginToGmailApplication()
 	{
 		System.out.println("Test Case : Login to Gmail Application");
 		//driver.findElement(By.name("identifier")).sendKeys("nag022@gmail.com");
+		driver.findElement(By.xpath("//input[@id='identifierId']")).sendKeys("nag022@gmail.com");
 		driver.findElement(By.id("identifierId")).sendKeys("nag022@gmail.com");
 		driver.findElements(By.className("VfPpkd-vQzf8d")).get(1).click();
 	}
@@ -59,7 +74,10 @@ public class GoogleMail
 	{
 		System.out.println("Test Case : Forgot Email");
 		//driver.findElement(By.tagName("button")).click();
-		driver.findElements(By.tagName("button")).get(0).click();
+		//driver.findElements(By.tagName("button")).get(0).click();
+		driver.findElements(By.className("VfPpkd-vQzf8d")).get(0).click();
+		driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[2]/c-wiz/div/div[2]/div/div/div[1]/form/span/section/div/div/div[3]/button")).click();
+								  ///html/body/div[1]/div[1]/div[2]/c-wiz/div/div[2]/div/div/div[1]/form/span/section/div/div/div[3]/button
 	}
 	
 	@Test
@@ -67,8 +85,9 @@ public class GoogleMail
 	{
 		System.out.println("Test Case : Learn more about using Guest mode");
 		//driver.findElement(By.linkText("Learn more about using Guest mode")).click();
+		driver.findElement(By.partialLinkText("Learn more about using")).click();
 		//driver.findElement(By.tagName("a")).click();
-		driver.findElements(By.tagName("a")).get(0).click();
+		//driver.findElements(By.tagName("a")).get(0).click();
 	}
 	
 	@Test
