@@ -11,6 +11,9 @@ import org.openqa.selenium.support.ui.Select;
 
 public class GoToMeeting
 {
+	//Actions : Mouse Hover , Click , Double Click , Right click , Pause , sendkeys 
+	
+	//WebElement class : click , incase if this click is not working then we can go for Click function from Actions class
 	
 	ChromeDriver driver = new ChromeDriver();
 	@Test
@@ -40,25 +43,63 @@ public class GoToMeeting
 		WebElement startBtn = driver.findElement(By.xpath("//button[text()='Start for Free']"));
 		actions.moveToElement(startBtn).pause(Duration.ofSeconds(2)).click().build().perform();
 		Thread.sleep(4000);
-		driver.findElement(By.xpath("//input[@placeholder='Enter Activation Code']")).sendKeys("123456");
-		driver.findElement(By.xpath("//button[text()='Verify']")).click();
+		driver.findElement(By.xpath("//input[@placeholder='Enter Activation Code']")).sendKeys("12345");
 		
+		String text1 = driver.findElement(By.xpath("//button[text()='Verify']")).getText();
 		
+		By byobj = By.xpath("//button[text()='Verify']");
+		WebElement verifyBtn = driver.findElement(byobj);
 		
+		String tagName = verifyBtn.getTagName();
 		
+		System.out.println("TagName :" + tagName );
 		
+		String text2 = verifyBtn.getText();
 		
+		System.out.println("Text on the object :" + text2);
 		
+		String classAttribute = verifyBtn.getAttribute("class");
 		
+		System.out.println("Calss Att :" + classAttribute );
 		
+		System.out.println(verifyBtn.isDisplayed());
+		System.out.println(verifyBtn.isEnabled());
 		
+		if(verifyBtn.isDisplayed()  && verifyBtn.isEnabled())
+		{
+			driver.findElement(By.xpath("//button[text()='Verify']")).click();
+		}
+		else
+		{
+			System.out.println("Verfiy Button is not Enabled");
+		}
 		
-		
-		
-		
-		
+				
+	}
+	
+	public void getFunctions()
+	{
 		
 		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
