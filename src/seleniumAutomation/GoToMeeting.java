@@ -4,8 +4,11 @@ import java.time.Duration;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
@@ -15,7 +18,19 @@ public class GoToMeeting
 	
 	//WebElement class : click , incase if this click is not working then we can go for Click function from Actions class
 	
-	ChromeDriver driver = new ChromeDriver();
+	WebDriver driver ;
+	@Test
+	public void allBrowsers()
+	{
+		//driver = new ChromeDriver();
+		
+		driver.get("https://www.goto.com/meeting");
+		driver.manage().window().maximize();
+		driver.findElement(By.xpath("//img[@alt='close icon']")).click();
+	}
+	
+	
+	
 	@Test
 	public void registerWithGoToMeeting() throws InterruptedException
 	{

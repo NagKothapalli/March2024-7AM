@@ -1,7 +1,11 @@
 package seleniumAutomation;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Properties;
 import java.util.Set;
 
 import org.junit.Before;
@@ -19,32 +23,52 @@ public class ApsrtcAutomation
 	
 	ChromeDriver driver = new ChromeDriver(); // 1234
 	Actions actions = new Actions(driver);
+	ReadProperties rp = new ReadProperties("Data/Apsrtc.properties");
 	
 	@Before
-	public void launchApplication()
-	{
+	public void launchApplication() throws IOException
+	{		
 		System.out.println("Test Case : Launch Apsrtc Application");
-		//driver.get("https://www.apsrtconline.in/");
+		driver.get(rp.readData("URL"));
 		driver.manage().window().maximize();
 		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));  // ImplicitWait
 	}
 	
 	@Test
-	public void bookBusTicket() throws InterruptedException
+	public void readTestData() throws IOException
+	{
+		FileInputStream myfile = new FileInputStream("Data/TestData.properties");
+		Properties myprop = new Properties();
+		myprop.load(myfile);
+		String myurl = myprop.getProperty("URL");
+		System.out.println(myurl);		
+		String fc = myprop.getProperty("FromCity");
+		System.out.println(fc);
+		String tc = myprop.getProperty("ToCity");
+		System.out.println(tc);
+	}
+	
+	
+	
+	@Test
+	public void bookBusTicket() throws InterruptedException, IOException
 	{
 		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(30));
 		WebElement srcObj = driver.findElement(By.xpath("//input[@name='source']"));
-		wait.until(ExpectedConditions.elementToBeClickable(srcObj)).sendKeys("HYDERABAD");
+		//Hardcoded
+		String fc = rp.readData("FromCity");
+		wait.until(ExpectedConditions.elementToBeClickable(srcObj)).sendKeys(fc);
 		//Thread.sleep(30000);
 		System.out.println("Test Case : Book Bus Ticket");
 		//driver.findElement(By.xpath("//input[@name='source']")).sendKeys("HYDERABAD");
 		actions.pause(Duration.ofSeconds(1)).sendKeys(Keys.ENTER).build().perform();
 		driver.findElement(By.xpath("//input[@name='searchBtn']")).click();
 		driver.switchTo().alert().accept();
-		driver.findElement(By.xpath("//input[@name='destination']")).sendKeys("GUNTUR");
+		driver.findElement(By.xpath("//input[@name='destination']")).sendKeys(rp.readData("ToCity"));
 		actions.pause(Duration.ofSeconds(1)).sendKeys(Keys.ENTER).build().perform();
 		driver.findElement(By.xpath("//input[@name='searchBtn']")).click();
-		driver.findElement(By.xpath("//a[text()='31']")).click();
+		//driver.findElement(By.xpath("//a[text()='31']")).click();
+		selectJDate(rp.readData("JDate"));
 		driver.findElement(By.xpath("//input[@name='searchBtn']")).click();
 	}
 	
@@ -59,6 +83,46 @@ public class ApsrtcAutomation
 		driver.findElement(By.xpath("//input[@name='txtJourneyDate']")).click();
 		selectJDate("12");
 		driver.findElement(By.xpath("//input[@name='searchBtn']")).click();
+	}
+	
+	@Test
+	public void bookBusTicket_datadriven() throws InterruptedException
+	{
+		for (int i = 1; i <= 10; i++) {
+			System.out.println("Test Case : Book Bus Ticket - Iteration :" + i);
+			driver.findElement(By.xpath("//input[@name='source']")).sendKeys("HYDERABAD");
+			actions.pause(Duration.ofSeconds(1)).sendKeys(Keys.ENTER).build().perform();
+			driver.findElement(By.xpath("//input[@name='destination']")).sendKeys("GUNTUR");
+			actions.pause(Duration.ofSeconds(1)).sendKeys(Keys.ENTER).build().perform();
+			driver.findElement(By.xpath("//input[@name='txtJourneyDate']")).click();
+			selectJDate("12");
+			driver.findElement(By.xpath("//input[@name='searchBtn']")).click();
+			Thread.sleep(2000);
+			driver.findElement(By.xpath("//a[@title='Home']")).click();
+		}
+	}
+	
+	@Test
+	public void bookBusTicket_dataDriven() throws IOException, InterruptedException
+	{
+		String fc = rp.readData("FromCities");
+		String[] fcities = fc.split(",");
+		String[] tcities = rp.readData("ToCities").split(",");
+		String[] jdates = rp.readData("JDates").split(",");
+		for(int i=0;i<fcities.length;i++) {
+			
+			System.out.println("Test Case : Book Bus Ticket - Iteration :" + (i+1));
+			driver.findElement(By.xpath("//input[@name='source']")).sendKeys(fcities[i]);
+			actions.pause(Duration.ofSeconds(1)).sendKeys(Keys.ENTER).build().perform();
+			driver.findElement(By.xpath("//input[@name='destination']")).sendKeys(tcities[i]);
+			actions.pause(Duration.ofSeconds(1)).sendKeys(Keys.ENTER).build().perform();
+			driver.findElement(By.xpath("//input[@name='txtJourneyDate']")).click();
+			selectJDate(jdates[i]);
+			driver.findElement(By.xpath("//input[@name='searchBtn']")).click();
+			Thread.sleep(2000);
+			driver.findElement(By.xpath("//a[@title='Home']")).click();
+		}
+		
 	}
 	
 	//Absolute 
