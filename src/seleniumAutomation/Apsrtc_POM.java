@@ -7,17 +7,31 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Apsrtc_POM {
 	
-	ChromeDriver driver = new ChromeDriver();
-	Actions actions = new Actions(driver);
-	ReadProperties rp = new ReadProperties("Data/Apsrtc.properties");
+	//ChromeDriver driver = new ChromeDriver();
+	//FirefoxDriver driver = new FirefoxDriver();
+	//EdgeDriver driver = new EdgeDriver();
+	WebDriver driver ;
+	Actions actions ;
+	ReadProperties rp;
+	DriverUtilities dUtils;
+	public Apsrtc_POM()
+	{
+		driver = new ChromeDriver(); // opens an empty google chrome browser - 1234
+		actions = new Actions(driver); // 1234
+		rp = new ReadProperties("Data/Apsrtc.properties");
+		dUtils = new DriverUtilities(driver);
+	}
 	
 	//****************Xpath ***********************
 	
@@ -44,29 +58,23 @@ public class Apsrtc_POM {
 		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(srcObj));
 		return element;
 	}
-	
-	public WebElement returnWebElement(String yourXpath)
-	{
-		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(30));
-		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(yourXpath)));
-		return element;
-	}
+		
 	
 	@Test
 	public void bookBusTicket()
 	{
 		System.out.println("Test Case : Book Bus Ticket");		
-		returnWebElement(sourceCityXpath).sendKeys("HYDERABAD");		
+		dUtils.returnWebElement(sourceCityXpath).sendKeys("HYDERABAD");		
 		//driver.findElement(By.xpath(sourceCityXpath)).sendKeys("HYDERABAD");
 		actions.pause(Duration.ofSeconds(1)).sendKeys(Keys.ENTER).build().perform();
 		//driver.findElement(By.xpath(destinationCityXpath)).sendKeys("GUNTUR");
-		returnWebElement(destinationCityXpath).sendKeys("GUNTUR");
+		dUtils.returnWebElement(destinationCityXpath).sendKeys("GUNTUR");
 		actions.pause(Duration.ofSeconds(1)).sendKeys(Keys.ENTER).build().perform();
 		//driver.findElement(By.xpath(calenderXpath)).click();
-		returnWebElement(calenderXpath).click();
+		dUtils.returnWebElement(calenderXpath).click();
 		selectJDate("12");
 		//driver.findElement(By.xpath(SearchBtnXpath)).click();
-		returnWebElement(SearchBtnXpath).click();
+		dUtils.returnWebElement(SearchBtnXpath).click();
 	}
 	
 	@Test
